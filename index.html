@@ -65,6 +65,12 @@ body {
   fill: #000000;
   opacity: 0.3;
 }
+
+.connect{
+  fill: #FFFFFF;
+  stroke: #FF0000;
+  stroke-width: 2;
+}
 </style>
 
 <ul id="mode">
@@ -97,43 +103,53 @@ body {
 </svg>
 
 <script>
+var connect = (function() {
+
+  var list = [];
+
+  var draw = function(connector) {
+    var d0 = connector.source.data()[0]
+      , d1 = connector.target.data()[0]
+      , x0 = d0.x + d0.width / 2
+      , y0 = d0.y + d0.height / 2
+      , x1 = d1.x + d1.width / 2
+      , y1 = d1.y + d1.height / 2
+      ;
+
+    var path
+      = "M" + x0 + "," + y0
+      + "L" + x1 + "," + y1;
+
+    canvas
+      .append("path")
+      .attr("d", path)
+      .classed("connect", true);
+  };
+
+  var connect = {
+    add: function(module1, module2) {
+      var connector = {
+          source: module1
+        , target: module2
+      };
+
+      list.push(connector);
+      draw(connector);
+    }
+  };
+
+  return connect;
+
+})();
+</script>
+
+<script>
 var canvas = d3.select("#canvas")
   , hoverModule
   , clickModule
   , scaleModule
   , mode
   , offset = { top: 80, left: 0 };
-
-
-
-
-var link = function() {
-  var curvature = .5;
-
-  function link(d) {
-    var x0 = d.source.x + d.source.dx,
-        x1 = d.target.x,
-        xi = d3.interpolateNumber(x0, x1),
-        x2 = xi(curvature),
-        x3 = xi(1 - curvature),
-        y0 = d.source.y + d.sy + d.dy / 2,
-        y1 = d.target.y + d.ty + d.dy / 2;
-
-    return "M" + x0 + "," + y0
-         + "C" + x2 + "," + y0
-         + " " + x3 + "," + y1
-         + " " + x1 + "," + y1;
-  }
-
-  link.curvature = function(_) {
-    if (!arguments.length) return curvature;
-    curvature = +_;
-    return link;
-  };
-
-  return link;
-};
-
 
 //drag and put group
 (function() {
@@ -251,8 +267,8 @@ var link = function() {
   var connectModule = function() {
     var clicking = d3.select(this);
 
-    if (mode == "connect" && clickModule && clickModule[0][0] == clicking[0][0]) {
-
+    if (mode == "connect" && clickModule && clickModule[0][0] != clicking[0][0]) {
+      connect.add(clickModule, clicking);
     }
 
     console.log(mode, clicking, clickModule);
@@ -311,6 +327,7 @@ var link = function() {
 
   canvas
     .on("mousemove", translateAndScale)
+    //.on("mousemove", connectModule)
     .on("mouseup", function() {
       scaleModule = null;
     });
