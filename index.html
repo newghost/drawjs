@@ -107,18 +107,43 @@ var connect = (function() {
 
   var list = [];
 
+  var getCenterPoint = function(d) {
+    var t = {
+            x : d.x + d.width / 2
+          , y : d.y
+        }
+      , r = {
+            x : d.x + d.width
+          , y : d.y + d.height / 2
+        }
+      , b = {
+            x : d.x + d.width / 2
+          , y : d.y + d.height
+        }
+      , l = {
+            x : d.x
+          , y : d.y + d.height / 2
+        }
+      ;
+
+    return {
+        t: t
+      , r: r
+      , b: b
+      , l: l
+    } 
+  };
+
   var draw = function(connector) {
     var d0 = connector.source.data()[0]
       , d1 = connector.target.data()[0]
-      , x0 = d0.x + d0.width / 2
-      , y0 = d0.y + d0.height / 2
-      , x1 = d1.x + d1.width / 2
-      , y1 = d1.y + d1.height / 2
+      , points1 = getCenterPoint(d0)
+      , points2 = getCenterPoint(d1)
       ;
 
     var path
-      = "M" + x0 + "," + y0
-      + "L" + x1 + "," + y1;
+      = "M" + points1.t.x + "," + points1.t.y
+      + "L" + points2.b.x + "," + points2.b.y
 
     canvas
       .append("path")
