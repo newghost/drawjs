@@ -21,6 +21,11 @@ body {
   padding: 0;
 }
 
+#mode{
+  height: 80px;
+  margin: 0;
+}
+
 .selected {
   background-color: #FF0;
 }
@@ -72,7 +77,7 @@ body {
   </li>
 </ul>
 
-<svg id="canvas" height="1000" width="800">
+<svg id="canvas" height="1200" width="1600">
   <path d="M153 334
   C153 334 151 334 151 334
   C151 339 153 344 156 344
@@ -90,14 +95,13 @@ body {
 </svg>
 
 <script>
-var canvas
+var canvas = d3.select("#canvas")
   , dragToModule
   , scaleModule
-  , mode;
+  , mode
+  , offset = { top: 80, left: 0 };
 
-canvas = d3.select("#canvas").attr({
-  width: $(window).width(), height: $(window).height()
-});
+
 
 
 var link = function() {
@@ -240,13 +244,10 @@ var link = function() {
 
   var translateAndScale = function() {
     if (scaleModule) {
-      var data = scaleModule.data()[0]
-        , offset = $("#canvas").offset();
+      var data = scaleModule.data()[0];
 
-      console.log(d3.event);
-
-      data.scaleX = (d3.event.clientX - offset.left - data.x) / data.width;
-      data.scaleY = (d3.event.clientY - offset.top - data.y) / data.height;
+      data.scaleX = (d3.event.clientX - offset.left - data.x + 10) / data.width;
+      data.scaleY = (d3.event.clientY - offset.top - data.y + 10) / data.height;
       scaleModule.scale(data.scaleX, data.scaleY);
     }
   };
