@@ -21,7 +21,9 @@ body {
   padding: 0;
 }
 
-#mode{
+#mode {
+  background: none repeat scroll 0 0 #eee;
+  border: 1px solid #FF0000;
   height: 80px;
   margin: 0;
 }
@@ -97,6 +99,7 @@ body {
 <script>
 var canvas = d3.select("#canvas")
   , hoverModule
+  , clickModule
   , scaleModule
   , mode
   , offset = { top: 80, left: 0 };
@@ -197,9 +200,9 @@ var link = function() {
 
 
   /*
-  Binding
+  Functionalities defination
   */
-  //drag & scale functionalities
+  //drag to function functionalities
   var dragAndPut = d3.behavior.drag().on("drag", function(d, i) {
     if (scaleModule) return;
     d.x += d3.event.dx;
@@ -244,16 +247,33 @@ var link = function() {
     }
   });
 
+  //connect two modules
+  var connectModule = function() {
+    var clicking = d3.select(this);
+
+    if (mode == "connect" && clickModule && clickModule[0][0] == clicking[0][0]) {
+
+    }
+
+    console.log(mode, clicking, clickModule);
+    clickModule = d3.select(this);
+  };
+
+  //scale modules
   var translateAndScale = function() {
     if (scaleModule) {
       var data = scaleModule.data()[0];
 
-      data.scaleX = (d3.event.clientX - offset.left - data.x + 10) / data.width;
-      data.scaleY = (d3.event.clientY - offset.top - data.y + 10) / data.height;
+      data.scaleX = (d3.event.pageX - offset.left - data.x + 10) / data.width;
+      data.scaleY = (d3.event.pageY - offset.top  - data.y + 10) / data.height;
       scaleModule.scale(data.scaleX, data.scaleY);
     }
   };
 
+
+  /*
+  Binding
+  */
   groupModule
     .on("mousedown", function() {
       var curModule = d3.select(this)
@@ -271,7 +291,9 @@ var link = function() {
         })
         .on("mouseout", function(d) {
           //hoverModule = null;
-        });
+        })
+        .on("click", connectModule)
+        ;
 
       //Support resize & replacement
       newModule.select(".control")
@@ -279,8 +301,6 @@ var link = function() {
           scaleModule = d3.select(this).closest("module");
         });
     });
-
-
 
   //drag/ scale mode switch
   groupModule.select(".control")
