@@ -1,0 +1,325 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <title>DrawJS</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="">
+  <meta name="author" content="">
+</head>
+
+<body>
+<script src="js/jquery-1.10.2.min.js"></script>
+<script src="js/d3.v3.js"></script>
+<script src="js/d3.plugins.js"></script>
+<script src="js/string.js"></script>
+
+<style>
+body {
+  margin: 0;
+  padding: 0;
+}
+
+.wrap {
+  fill:     #FF0;
+  stroke:   #000;
+  opacity:  0.2;
+}
+
+.wrap:hover {
+  stroke:   #F00;
+}
+
+.title {
+  dominant-baseline: central;
+  fill: #000000;
+  font-weight: 700;
+  opacity: 0.1;
+  text-anchor: middle;
+}
+
+.control {
+  fill: "#F00"
+}
+
+/*hidden controls in the module group*/
+.container .control, 
+.asset .control {
+  display: none;
+}
+
+.asset .title {
+  fill: #000000;
+  opacity: 0.3;
+}
+</style>
+
+<script>
+var canvas
+  , dragToModule
+  , scaleModule
+  ;
+
+
+canvas = d3.select("body").append("svg").attr({
+  width: $(window).width(), height: $(window).height()
+});
+
+
+//drag clone
+(function() {
+  return;
+
+  var dragRect = d3.behavior.drag().on("drag", function(d, i) {
+    var dragTarget = d3.select(this);
+    dragTarget.attr({
+        x: d3.event.dx + parseInt(dragTarget.attr("x"))
+      , y: d3.event.dy + parseInt(dragTarget.attr("y"))
+    });
+  })
+  //drop to container
+  .on("dragend", function() {
+    var dragging  = d3.select(this);
+    if (dragToModule) {
+      var container = dragToModule.select(".container")
+        , rectSize  = container.selectAll("rect").size();
+
+      if (rectSize < 8) {
+        //reset position;
+        dragging.attr({ x: 0, y: rectSize * 40 });
+        container[0][0].appendChild(dragging[0][0]);
+      }
+    }
+  });
+
+  var rect = canvas.append("rect");
+
+  rect.attr({
+      x: 20
+    , y: 20
+    , width: 20
+    , height: 20
+    , stroke: "#000"
+  });
+
+  rect.on("mousedown", function() {
+    //clone(this);
+    var newRect = d3.select(this).clone();
+    newRect.attr("fill", "#f00");
+    newRect.call(dragRect);
+    newRect.trigger("mousedown");
+  });
+})();
+
+
+var link = function() {
+  var curvature = .5;
+
+  function link(d) {
+    var x0 = d.source.x + d.source.dx,
+        x1 = d.target.x,
+        xi = d3.interpolateNumber(x0, x1),
+        x2 = xi(curvature),
+        x3 = xi(1 - curvature),
+        y0 = d.source.y + d.sy + d.dy / 2,
+        y1 = d.target.y + d.ty + d.dy / 2;
+
+    return "M" + x0 + "," + y0
+         + "C" + x2 + "," + y0
+         + " " + x3 + "," + y1
+         + " " + x1 + "," + y1;
+  }
+
+  link.curvature = function(_) {
+    if (!arguments.length) return curvature;
+    curvature = +_;
+    return link;
+  };
+
+  return link;
+};
+
+//drag group
+(function() {
+  /*
+  Drawing
+  */
+  var moduleData = [
+      { x: 20, y: 20,  width: 60,   height: 20,  scaleX: 1,    scaleY: 1,    title: "ASSET", txtSize: "12px", classed: "asset", vertical: true, px: 20 }
+    , { x: 20, y: 70,  width: 100,   height: 300, scaleX: 0.2, scaleY: 0.2, title: "RACK",   txtSize: "62px", classed: "rack", py: 20, txtVertical: true}
+    , { x: 20, y: 150, width: 800,  height: 340, scaleX: 0.1,  scaleY: 0.1,  title: "ROW",    txtSize: "120px", classed: "row" }
+  ];
+
+  //g.module        : translate
+  var groupModule = 
+    canvas.selectAll("g.module")
+      .data(moduleData)
+      .enter()
+        .append("g")
+        .attr("class", function(d) { return "module " + d.classed })
+        .attr("transform", function(d) {
+          return "translate(" + [ d.x, d.y ] + "), " + "scale(" + [ d.scaleX, d.scaleY ] + ")";
+        });
+
+  //drawing group module
+  groupModule.append("rect").attr({
+      width:  function(d) { return d.width }
+    , height: function(d) { return d.height }
+  }).classed("wrap", true);
+
+  groupModule.append("text").attr({
+      x: function(d) { 
+        if (d.txtVertical) {
+          return d.height / 2
+        }
+        return d.width / 2
+      }
+    , y: function(d) {
+        if (d.txtVertical) {
+          return 0 - d.width / 2
+        }
+        return d.height / 2
+      }
+    , "font-size": function(d) { return d.txtSize }
+  })
+  .text(function(d) {
+      return d.title;
+  })
+  .classed("title", true)
+  .attr("transform", function(d) {
+    if (d.txtVertical) {
+      return "rotate(90)"
+    }
+  })
+  ;
+
+  groupModule.append("rect").attr({
+      x: function(d) { return d.width - 20 }
+    , y: function(d) { return d.height - 20 }
+    , width:  20
+    , height: 20
+  }).classed("control", true);
+
+  groupModule.append("g").classed("container", true);
+
+
+  /*
+  Binding
+  */
+  //drag & scale functionalities
+  var dragAndPut = d3.behavior.drag().on("drag", function(d, i) {
+    if (scaleModule) return;
+    d.x += d3.event.dx;
+    d.y += d3.event.dy;
+    d3.select(this).translate(d.x, d.y);
+  })
+  //drop to container
+  .on("dragend", function(d) {
+    var dragging  = d3.select(this);
+
+    if (dragToModule && dragToModule[0][0] != dragging[0][0]) {
+      var container   = dragToModule.select(".container")
+        , childNodes  = container.node().childNodes
+        , size        = childNodes.length
+        , last        = d3.select(childNodes[size - 1]).data()[0] || {x: 0, y: 0, width: 0, height: 0}
+        ;
+
+      console.log("before", d);
+
+      /*
+      add from vertical direction?
+      px: init offsetX in the container
+      py: init offsetY in the container
+      */
+      d.px = d.px || 0;
+      d.py = d.py || 0;
+      if (d.vertical) {
+        d.x = d.px;
+        d.y = size ? (last.y + last.height + 10) : d.py; 
+      } else {
+        d.x = size ? (last.x + last.width + 10) : d.px;
+        d.y = d.py;
+      }
+
+      console.log("after", d);
+
+      //reset the position
+      dragging.translate(d.x, d.y);
+      //redefine the depts
+      container[0][0].appendChild(dragging[0][0]);
+    }
+  });
+
+  var translateAndScale = function() {
+    if (scaleModule) {
+      var data = scaleModule.data()[0];
+      data.scaleX = (d3.event.clientX - data.x + 10) / data.width;
+      data.scaleY = (d3.event.clientY - data.y + 10) / data.height;
+      scaleModule.scale(data.scaleX, data.scaleY);
+    }
+  };
+
+  groupModule
+    .on("mousedown", function() {
+      var curModule = d3.select(this)
+        , newModule = curModule.clone();
+
+      newModule.call(dragAndPut);
+      //reset the size of new module
+      newModule.scale(1, 1);
+      newModule.trigger("mousedown");
+
+      //Support drag to container
+      newModule
+        .on("mouseover", function(d) {
+          dragToModule = d3.select(this);
+        })
+        .on("mouseout", function(d) {
+          //dragToModule = null;
+        });
+
+      //Support resize & replacement
+      newModule.select(".control")
+        .on("mousedown", function() {
+          scaleModule = d3.select(this).closest("module");
+        });
+    });
+
+
+
+  //drag/ scale mode switch
+  groupModule.select(".control")
+    .on("mousedown", function() {
+      scaleModule = d3.select(this).closest("module");
+      console.log(scaleModule);
+    });
+
+  canvas
+    .on("mousemove", translateAndScale)
+    .on("mouseup", function() {
+      scaleModule = null;
+    });
+
+})();
+</script>
+
+
+<svg height="1000" width="800">
+  <path d="M153 334
+  C153 334 151 334 151 334
+  C151 339 153 344 156 344
+  C164 344 171 339 171 334
+  C171 322 164 314 156 314
+  C142 314 131 322 131 334
+  C131 350 142 364 156 364
+  C175 364 191 350 191 334
+  C191 311 175 294 156 294
+  C131 294 111 311 111 334
+  C111 361 131 384 156 384
+  C186 384 211 361 211 334
+  C211 300 186 274 156 274"
+  style="fill:white;stroke:red;stroke-width:2"/>
+</svg>
+
+</body>
+</html>
