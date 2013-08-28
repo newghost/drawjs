@@ -73,7 +73,7 @@ body {
     <a name="move">Move</a>
   </li>
   <li>
-    <a name="drag">Drag And Group</a>
+    <a name="dragToGroup">Drag To Group</a>
   </li>
 </ul>
 
@@ -96,7 +96,7 @@ body {
 
 <script>
 var canvas = d3.select("#canvas")
-  , dragToModule
+  , hoverModule
   , scaleModule
   , mode
   , offset = { top: 80, left: 0 };
@@ -130,6 +130,7 @@ var link = function() {
 
   return link;
 };
+
 
 //drag and put group
 (function() {
@@ -209,8 +210,9 @@ var link = function() {
   .on("dragend", function(d) {
     var dragging  = d3.select(this);
 
-    if (dragToModule && dragToModule[0][0] != dragging[0][0]) {
-      var container   = dragToModule.select(".container")
+    //drop to
+    if (mode == "dragToGroup" && hoverModule && hoverModule[0][0] != dragging[0][0]) {
+      var container   = hoverModule.select("g.container")
         , childNodes  = container.node().childNodes
         , size        = childNodes.length
         , last        = d3.select(childNodes[size - 1]).data()[0] || {x: 0, y: 0, width: 0, height: 0}
@@ -265,10 +267,10 @@ var link = function() {
       //Support drag to container
       newModule
         .on("mouseover", function(d) {
-          dragToModule = d3.select(this);
+          hoverModule = d3.select(this);
         })
         .on("mouseout", function(d) {
-          //dragToModule = null;
+          //hoverModule = null;
         });
 
       //Support resize & replacement
