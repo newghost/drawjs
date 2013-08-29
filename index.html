@@ -244,14 +244,14 @@ var canvas = d3.select("#canvas")
   Functionalities defination
   */
   //drag to function functionalities
-  var dragAndPut = d3.behavior.drag().on("drag", function(d, i) {
+  var drag = function(d, i) {
     if (scaleModule) return;
     d.x += d3.event.dx;
     d.y += d3.event.dy;
     d3.select(this).translate(d.x, d.y);
-  })
-  //drop to container
-  .on("dragend", function(d) {
+  };
+
+  var group = function(d) {
     var dragging  = d3.select(this);
 
     //drop to
@@ -286,12 +286,20 @@ var canvas = d3.select("#canvas")
       //redefine the depts
       container[0][0].appendChild(dragging[0][0]);
     }
-  });
+  };
+
+
+  var draggable = d3.behavior.drag().on("drag", drag);
+
+  //support drag and group
+  var groupable = d3.behavior.drag()
+    .on("drag",    drag)
+    //drop to container
+    .on("dragend", group)
+    ;
 
   //connect two modules
-  var startPoint
-    , linePath;
-
+  var linePath;
   var getCurPoint = function() {
     return { x: d3.event.pageX - offset.left, y: d3.event.pageY - offset.top }
   };
@@ -309,20 +317,21 @@ var canvas = d3.select("#canvas")
     clickModule = d3.select(this);
     */
     if (mode == "connect") {
-      startPoint = getCurPoint();
-      linePath = canvas
-        .append("path")
-        .classed("connect", true);
+      var startPoint = getCurPoint();
+      linePath = canvas.append("path").classed("connect", true);
+      linePath.data([{startPoint: startPoint, endPoint: startPoint}]);
     }
   };
 
   var connecting = function() {
-    if (startPoint && mode == "connect") {
-      var endPoint = getCurPoint();
+    if (linePath && mode == "connect") {
+      var d = linePath.data()[0];
+
+      d.endPoint = getCurPoint();
 
       var path
-        = "M" + startPoint.x  + "," + startPoint.y
-        + "L" + endPoint.x    + "," + endPoint.y
+        = "M" + d.startPoint.x  + "," + d.startPoint.y
+        + "L" + d.endPoint.x    + "," + d.endPoint.y
         ;
 
       linePath.attr("d", path)
@@ -330,7 +339,7 @@ var canvas = d3.select("#canvas")
   };
 
   var connectStop = function() {
-    mode == "connect" && (startPoint = null);
+    mode == "connect" && (linePath = null);
   };
 
   d3.select(document)
@@ -359,7 +368,7 @@ var canvas = d3.select("#canvas")
       var curModule = d3.select(this)
         , newModule = curModule.clone();
 
-      newModule.call(dragAndPut);
+      newModule.call(groupable);
       //reset the size of new module
       newModule.scale(1, 1);
       newModule.trigger("mousedown");
