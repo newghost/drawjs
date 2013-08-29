@@ -152,15 +152,15 @@ var connect = (function() {
   };
 
   var connect = {
-    add: function(module1, module2) {
-      var connector = {
-          source: module1
-        , target: module2
-      };
+      add: function(module1, module2) {
+        var connector = {
+            source: module1
+          , target: module2
+        };
 
-      list.push(connector);
-      draw(connector);
-    }
+        list.push(connector);
+        draw(connector);
+      }
   };
 
   return connect;
@@ -289,16 +289,55 @@ var canvas = d3.select("#canvas")
   });
 
   //connect two modules
-  var connectModule = function() {
+  var startPoint
+    , linePath;
+
+  var getCurPoint = function() {
+    return { x: d3.event.pageX - offset.left, y: d3.event.pageY - offset.top }
+  };
+
+  var connectStart = function() {
+    /*
     var clicking = d3.select(this);
 
     if (mode == "connect" && clickModule && clickModule[0][0] != clicking[0][0]) {
-      connect.add(clickModule, clicking);
+      //connect.add(clickModule, clicking);
+      connect.from(clicking);
     }
 
     console.log(mode, clicking, clickModule);
     clickModule = d3.select(this);
+    */
+    if (mode == "connect") {
+      startPoint = getCurPoint();
+      linePath = canvas
+        .append("path")
+        .classed("connect", true);
+    }
   };
+
+  var connecting = function() {
+    if (startPoint && mode == "connect") {
+      var endPoint = getCurPoint();
+
+      var path
+        = "M" + startPoint.x  + "," + startPoint.y
+        + "L" + endPoint.x    + "," + endPoint.y
+        ;
+
+      linePath.attr("d", path)
+    }
+  };
+
+  var connectStop = function() {
+    mode == "connect" && (startPoint = null);
+  };
+
+  d3.select(document)
+    .on("mousemove", connecting)
+    .on("mousedown", connectStart)
+    .on("mouseup",   connectStop)
+    ;
 
   //scale modules
   var translateAndScale = function() {
@@ -333,7 +372,6 @@ var canvas = d3.select("#canvas")
         .on("mouseout", function(d) {
           //hoverModule = null;
         })
-        .on("click", connectModule)
         ;
 
       //Support resize & replacement
