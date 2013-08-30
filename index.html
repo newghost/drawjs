@@ -305,14 +305,34 @@ var canvas = d3.select("#canvas")
   };
 
   var connectHandler = function() {
+    //connect on canvas
+    if (d3.event.target == d3.event.currentTarget) return;
+
+    var module = d3.select(d3.event.target).closest("module");
+
     //connect end?
     if (mode == "connect") {
       if (curPath) {
+        var pathData = curPath.data()[0];
+
+        //already connected?
+        if (pathData.startTarget[0][0] != module[0][0]) {
+          curPath.data()[0].endTarget = module;
+        } else {
+          curPath.remove();
+        }
+
+        console.log(curPath.data()[0]);
         curPath = null;
       } else {
         var startPoint = getCurPoint();
         curPath = canvas.append("path").classed("connect", true);
-        curPath.data([{startPoint: startPoint, endPoint: startPoint}]);        
+        curPath.data([{
+            startPoint:   startPoint
+          , endPoint:     startPoint
+          , startTarget:  module
+          , endTarget:    null
+        }]);
       }
     }
   };
@@ -332,9 +352,12 @@ var canvas = d3.select("#canvas")
     }
   };
 
+  //start/stop connect on canvas, not on whole document
+  canvas
+    .on("click", connectHandler);
+  //connecting on canvas
   d3.select(document)
-    .on("mousemove",  connecting)
-    .on("click",      connectHandler)
+    .on("mousemove", connecting)
     //.on("mouseup",   connectStop)
     ;
 
