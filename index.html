@@ -74,15 +74,9 @@ body {
 </style>
 
 <ul id="mode">
-  <li>
-    <a name="connect">Connect</a>
-  </li>
-  <li>
-    <a name="move">Move</a>
-  </li>
-  <li>
-    <a name="dragToGroup">Drag To Group</a>
-  </li>
+  <li><a name="move">Move</a></li>
+  <li><a name="connect">Connect</a></li>
+  <li><a name="dragToGroup">Grouping</a></li>
 </ul>
 
 <svg id="canvas" height="1200" width="1600">
@@ -249,6 +243,7 @@ var canvas = d3.select("#canvas")
     d.x += d3.event.dx;
     d.y += d3.event.dy;
     d3.select(this).translate(d.x, d.y);
+    updateConnected(d3.select(this));
   };
 
   var group = function(d) {
@@ -304,29 +299,30 @@ var canvas = d3.select("#canvas")
 
   //Cloned current point, get rid of margin
   var getCurPoint = function() {
-    return { x: curPoint.x - offset.left, y: curPoint.y - offset.top }
+    return { x: curPoint.x - offset.left, y: curPoint.y - offset.top, width:0, height:0, scaleX:1, scaleY:1 }
   };
 
   //update path
-  var updatePath = function(module) {
-    d3.selectAll("path.connect").each(function(d) {
-      if (d.startTarget.equal(module) || d.endTarget.equal(module)) {
-        var path = d3.select(this);
-
-        console.log(path);
+  var updateConnected = function(module) {
+    d3.selectAll("path.connect").each(function(pathObject) {
+      if (!pathObject.startTarget || !pathObject.endTarget) {
+        pathObject.target.remove();
+      } else if (pathObject.startTarget.equal(module) || pathObject.endTarget.equal(module)) {
+        pathObject.update();
+        return;
       }
     });
   };
 
   var update = function() {
-    var d           = this
-      , startPoint  = d.startPoint
-      , endPoint    = d.endPoint || getCurPoint()
+    var d         = this
+      , startData = d.startTarget.data()[0]
+      , endData   = d.endTarget ? d.endTarget.data()[0] : getCurPoint()
       ;
 
     var path
-      = "M" + startPoint.x  + "," + startPoint.y
-      + "L" + endPoint.x    + "," + endPoint.y
+      = "M" + startData.x  + "," + startData.y
+      + "L" + endData.x    + "," + endData.y
       ;
 
     d.target.attr("d", path);
@@ -339,28 +335,24 @@ var canvas = d3.select("#canvas")
     //connect end?
     if (mode == "connect") {
       if (curPath) {
-        var pathData = curPath.data()[0];
-
+        var pathObject = curPath.data()[0];
         //already connected?
         if (module.size() > 0
           && d3.event.target != d3.event.currentTarget
-          && pathData.startTarget[0][0] != module[0][0]) {
+          && !pathObject.startTarget.equal(module)) {
 
-          curPath.data()[0].endTarget = module;
-          curPath.data()[0].endPoint  = getCurPoint();
+          pathObject.endTarget = module;
+          pathObject.update();
         } else {
           curPath.remove();
         }
 
         curPath = null;
       } else if (module.size() > 0) {
-        var startPoint = getCurPoint();
         curPath = canvas.append("path").classed("connect", true);
         curPath.data([{
             target: curPath
           , update: update
-          , startPoint:   startPoint
-          , endPoint:     null
           , startTarget:  module
           , endTarget:    null
         }]);

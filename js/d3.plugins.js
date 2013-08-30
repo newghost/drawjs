@@ -111,6 +111,6 @@ d3.selection.prototype.scale = function(sx, sy) {
 /*
 Connect two d3 objects
 */
-d3.select.prototype.equal = function(_d3) {
+d3.selection.prototype.equal = function(_d3) {
   return this[0][0] == _d3[0][0];
 };
