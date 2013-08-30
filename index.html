@@ -299,14 +299,40 @@ var canvas = d3.select("#canvas")
     ;
 
   //connect two modules
-  var curPath;
+  var curPath
+    , curPoint = { x:0, y: 0 };   //cache current point
+
+  //Cloned current point, get rid of margin
   var getCurPoint = function() {
-    return { x: d3.event.pageX - offset.left, y: d3.event.pageY - offset.top }
+    return { x: curPoint.x - offset.left, y: curPoint.y - offset.top }
+  };
+
+  //update path
+  var updatePath = function(module) {
+    d3.selectAll("path.connect").each(function(d) {
+      if (d.startTarget.equal(module) || d.endTarget.equal(module)) {
+        var path = d3.select(this);
+
+        console.log(path);
+      }
+    });
+  };
+
+  var update = function() {
+    var d           = this
+      , startPoint  = d.startPoint
+      , endPoint    = d.endPoint || getCurPoint()
+      ;
+
+    var path
+      = "M" + startPoint.x  + "," + startPoint.y
+      + "L" + endPoint.x    + "," + endPoint.y
+      ;
+
+    d.target.attr("d", path);
   };
 
   var connectHandler = function() {
-    //connect on canvas
-    if (d3.event.target == d3.event.currentTarget) return;
 
     var module = d3.select(d3.event.target).closest("module");
 
@@ -316,20 +342,25 @@ var canvas = d3.select("#canvas")
         var pathData = curPath.data()[0];
 
         //already connected?
-        if (pathData.startTarget[0][0] != module[0][0]) {
+        if (module.size() > 0
+          && d3.event.target != d3.event.currentTarget
+          && pathData.startTarget[0][0] != module[0][0]) {
+
           curPath.data()[0].endTarget = module;
+          curPath.data()[0].endPoint  = getCurPoint();
         } else {
           curPath.remove();
         }
 
-        console.log(curPath.data()[0]);
         curPath = null;
-      } else {
+      } else if (module.size() > 0) {
         var startPoint = getCurPoint();
         curPath = canvas.append("path").classed("connect", true);
         curPath.data([{
-            startPoint:   startPoint
-          , endPoint:     startPoint
+            target: curPath
+          , update: update
+          , startPoint:   startPoint
+          , endPoint:     null
           , startTarget:  module
           , endTarget:    null
         }]);
@@ -339,16 +370,7 @@ var canvas = d3.select("#canvas")
 
   var connecting = function() {
     if (curPath && mode == "connect") {
-      var d = curPath.data()[0];
-
-      d.endPoint = getCurPoint();
-
-      var path
-        = "M" + d.startPoint.x  + "," + d.startPoint.y
-        + "L" + d.endPoint.x    + "," + d.endPoint.y
-        ;
-
-      curPath.attr("d", path)
+      curPath.data()[0].update();
     }
   };
 
@@ -412,7 +434,10 @@ var canvas = d3.select("#canvas")
 
   canvas
     .on("mousemove", translateAndScale)
-    //.on("mousemove", connectModule)
+    .on("mousemove", function() {
+      curPoint.x = d3.event.pageX;
+      curPoint.y = d3.event.pageY;
+    })
     .on("mouseup", function() {
       scaleModule = null;
     });

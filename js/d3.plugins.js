@@ -67,6 +67,8 @@ d3.selection.prototype.closest = function(selector) {
   for (var i = nodes.length; i-->0;) {
     var parent = nodes[i];
     while (parent = parent.parentNode) {
+      if (parent.tagName == "BODY") break;
+
       var element = d3.select(parent);
       if (element.classed(selector)) {
         return element;
@@ -109,6 +111,6 @@ d3.selection.prototype.scale = function(sx, sy) {
 /*
 Connect two d3 objects
 */
-d3.select.prototype.connect = function(_d3) {
-
+d3.select.prototype.equal = function(_d3) {
+  return this[0][0] == _d3[0][0];
 };
