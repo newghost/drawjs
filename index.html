@@ -299,33 +299,27 @@ var canvas = d3.select("#canvas")
     ;
 
   //connect two modules
-  var linePath;
+  var curPath;
   var getCurPoint = function() {
     return { x: d3.event.pageX - offset.left, y: d3.event.pageY - offset.top }
   };
 
-  var connectStart = function() {
-    /*
-    var clicking = d3.select(this);
-
-    if (mode == "connect" && clickModule && clickModule[0][0] != clicking[0][0]) {
-      //connect.add(clickModule, clicking);
-      connect.from(clicking);
-    }
-
-    console.log(mode, clicking, clickModule);
-    clickModule = d3.select(this);
-    */
+  var connectHandler = function() {
+    //connect end?
     if (mode == "connect") {
-      var startPoint = getCurPoint();
-      linePath = canvas.append("path").classed("connect", true);
-      linePath.data([{startPoint: startPoint, endPoint: startPoint}]);
+      if (curPath) {
+        curPath = null;
+      } else {
+        var startPoint = getCurPoint();
+        curPath = canvas.append("path").classed("connect", true);
+        curPath.data([{startPoint: startPoint, endPoint: startPoint}]);        
+      }
     }
   };
 
   var connecting = function() {
-    if (linePath && mode == "connect") {
-      var d = linePath.data()[0];
+    if (curPath && mode == "connect") {
+      var d = curPath.data()[0];
 
       d.endPoint = getCurPoint();
 
@@ -334,18 +328,14 @@ var canvas = d3.select("#canvas")
         + "L" + d.endPoint.x    + "," + d.endPoint.y
         ;
 
-      linePath.attr("d", path)
+      curPath.attr("d", path)
     }
   };
 
-  var connectStop = function() {
-    mode == "connect" && (linePath = null);
-  };
-
   d3.select(document)
-    .on("mousemove", connecting)
-    .on("mousedown", connectStart)
-    .on("mouseup",   connectStop)
+    .on("mousemove",  connecting)
+    .on("click",      connectHandler)
+    //.on("mouseup",   connectStop)
     ;
 
   //scale modules
