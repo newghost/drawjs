@@ -377,6 +377,9 @@ var canvas = d3.select("#canvas")
 
   //scale modules
   var translateAndScale = function() {
+    curPoint.x = d3.event.pageX;
+    curPoint.y = d3.event.pageY;
+
     if (scaleModule) {
       var data = scaleModule.data()[0];
 
@@ -426,10 +429,6 @@ var canvas = d3.select("#canvas")
 
   canvas
     .on("mousemove", translateAndScale)
-    .on("mousemove", function() {
-      curPoint.x = d3.event.pageX;
-      curPoint.y = d3.event.pageY;
-    })
     .on("mouseup", function() {
       scaleModule = null;
     });
