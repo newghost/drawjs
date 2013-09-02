@@ -121,6 +121,22 @@ var Canvas = {
         canvas.curPoint.x = d3.event.pageX;
         canvas.curPoint.y = d3.event.pageY;
       });
+
+      //scale modules
+      var translateAndScale = function() {
+        if (canvas.scaleModule) {
+          var data = canvas.scaleModule; // scaleModule.data()[0];
+          data.scaleX = (d3.event.pageX - canvas.offset.left - data.x + 10) / data.width;
+          data.scaleY = (d3.event.pageY - canvas.offset.top  - data.y + 10) / data.height;
+          data.target.scale(data.scaleX, data.scaleY);
+        }
+      };
+
+      canvas.target
+        .on("mousemove.scale", translateAndScale)
+        .on("mouseup.scale", function() {
+          canvas.scaleModule = null;
+        });
     }
 };
 
@@ -309,8 +325,11 @@ var canvas = Canvas.target;
     Object.create(Module).init(moduleInfo);
   });
 
+  //g.module        : translate
+  var groupModule = canvas.selectAll("g.module");
+
   /*
-  Functionalities defination
+  Drag to Group
   */
   //drag to function functionalities
   var drag = function(d, i) {
@@ -328,12 +347,6 @@ var canvas = Canvas.target;
     }
   };
 
-
-  //g.module        : translate
-  var groupModule = canvas.selectAll("g.module");
-
-  var draggable = d3.behavior.drag().on("drag", drag);
-
   //support drag and group
   var groupable = d3.behavior.drag()
     .on("drag",    drag)
@@ -341,7 +354,9 @@ var canvas = Canvas.target;
     .on("dragend", group)
     ;
 
-  //connect two modules
+  /*
+  Connect two modules
+  */
   var curConnector;
 
   //update all path
@@ -376,28 +391,12 @@ var canvas = Canvas.target;
   };
 
   //start/stop connect on canvas, not on whole document
-  canvas
-    .on("click", connectHandler);
+  canvas.on("click", connectHandler);
   //connecting on canvas
-  d3.select(document)
-    .on("mousemove", connecting)
-    //.on("mouseup",   connectStop)
-    ;
-
-  //scale modules
-  var translateAndScale = function() {
-    if (Canvas.scaleModule) {
-      var data = Canvas.scaleModule; // scaleModule.data()[0];
-
-      data.scaleX = (d3.event.pageX - Canvas.offset.left - data.x + 10) / data.width;
-      data.scaleY = (d3.event.pageY - Canvas.offset.top  - data.y + 10) / data.height;
-      data.target.scale(data.scaleX, data.scaleY);
-    }
-  };
-
+  d3.select(document).on("mousemove", connecting);
 
   /*
-  Binding
+  Clonable
   */
   groupModule
     .on("mousedown", function(module) {
@@ -425,13 +424,6 @@ var canvas = Canvas.target;
           //persistent scale module
           Canvas.scaleModule = Canvas.hoverModule;
         });
-    });
-
-
-  canvas
-    .on("mousemove", translateAndScale)
-    .on("mouseup", function() {
-      Canvas.scaleModule = null;
     });
 
 })();
