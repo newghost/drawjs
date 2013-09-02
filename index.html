@@ -14,8 +14,10 @@
 <script src="js/d3.plugins.js"></script>
 <script src="js/string.js"></script>
 
+<!--
 <script src="js/canvas.js"></script>
 <script src="js/connector.js"></script>
+-->
 
 <style>
 /*html style*/
@@ -70,9 +72,9 @@ body {
 }
 
 .connect{
-  fill: #FFFFFF;
-  stroke: #FF0000;
+  fill: #CCCCCC;
   stroke-width: 2;
+  opacity: 0.5;
 }
 </style>
 
@@ -201,8 +203,11 @@ var Connector = {
         ;
 
       var path
-        = "M" + m1.x + "," + m1.y
-        + "L" + m2.x + "," + m2.y
+        = "M" + l1[0] + "," + l1[1]
+        + "L" + l2[0] + "," + l2[1]
+        + "L" + l3[0] + "," + l3[1]
+        + "L" + l4[0] + "," + l4[1]
+        + "L" + l1[0] + "," + l1[1]
         ;
 
       connector.target.attr("d", path);
