@@ -14,6 +14,9 @@
 <script src="js/d3.plugins.js"></script>
 <script src="js/string.js"></script>
 
+<script src="js/canvas.js"></script>
+<script src="js/connector.js"></script>
+
 <style>
 /*html style*/
 body {
@@ -149,16 +152,35 @@ var Connector = {
   , endTarget:    null
   , update: function() {
       var connector = this
-        , startData = connector.startTarget.data()[0]
-        , endData   = connector.endTarget ? connector.endTarget.data()[0] : Canvas.getCurPoint()
+        , m1 = connector.startTarget.data()[0]
+        , m2 = connector.endTarget ? connector.endTarget.data()[0] : Canvas.getCurPoint()
         ;
+
+      //Get lockwise 8 points: topleft(p, topmiddle, topright, rightmiddle ...
+      var getPoints = function(module) {
+        return [
+            [ module.x, module.y ]
+          , [ module.x + module.width / 2, module.y ]
+          , [ module.x + module.width, module.y ]
+          , [ module.x + module.width, module.y + module.height / 2 ]
+          , [ module.x + module.width, module.y + module.height ]
+          , [ module.x + module.width / 2, module.y + module.height ]
+          , [ module.x, module.y + module.height ]
+          , [ module.x, module.y + module.height / 2 ]
+        ]
+      };
+
+      var p1 = getPoints(m1)
+        , p2 = getPoints(m2);
+
+
 
       var path
-        = "M" + startData.x  + "," + startData.y
-        + "L" + endData.x    + "," + endData.y
+        = "M" + m1.x + "," + m1.y
+        + "L" + m2.x + "," + m2.y
         ;
 
-      connector.target.attr("d", path);
+      connector.target.attr("d", path, p1, p2);
       return connector;
     }
     //start connecting
