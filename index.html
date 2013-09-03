@@ -14,11 +14,6 @@
 <script src="js/d3.plugins.js"></script>
 <script src="js/string.js"></script>
 
-<!--
-<script src="js/canvas.js"></script>
-<script src="js/connector.js"></script>
--->
-
 <style>
 /*html style*/
 body {
@@ -256,6 +251,22 @@ var Module = {
       newModule.target = module.target.clone();
       newModule.target.data([newModule]);
 
+      /*
+      Only cloned modules attached the events responser
+      */
+      //Support drag to container
+      newModule.target
+        .on("mouseover", function(d) {
+          Canvas.hoverModule = d;
+        });
+
+      //Support resize & replacement
+      newModule.target.select(".control")
+        .on("mousedown", function() {
+          //persistent scale module
+          Canvas.scaleModule = Canvas.hoverModule;
+        });
+
       return newModule;
     }
   , append: function(child) {
@@ -364,8 +375,9 @@ var canvas = Canvas.target;
 
 //drag and put group
 (function() {
+
   /*
-  Drawing
+  Create Clonable Module
   */
   var moduleData = [
       { x: 20, y: 20,  width: 60,   height: 20,  scaleX: 1,    scaleY: 1,    title: "ASSET", txtSize: "12px", classed: "asset", vertical: true, px: 20 }
@@ -378,7 +390,18 @@ var canvas = Canvas.target;
   });
 
   //g.module        : translate
-  var groupModule = canvas.selectAll("g.module");
+  var clonableModule = canvas.selectAll("g.module");
+
+  clonableModule
+    .on("mousedown", function(module) {
+      var newData   = module.clone()
+        , newModule = newData.target;
+
+      newModule.call(groupable);
+      //reset the size of new module
+      newModule.scale(1, 1);
+      newModule.trigger("mousedown");
+    });
 
   /*
   Drag to Group
@@ -446,37 +469,6 @@ var canvas = Canvas.target;
   canvas.on("click", connectHandler);
   //connecting on canvas
   d3.select(document).on("mousemove", connecting);
-
-  /*
-  Clonable
-  */
-  groupModule
-    .on("mousedown", function(module) {
-      var newData   = module.clone()
-        , newModule = newData.target;
-
-      newModule.call(groupable);
-      //reset the size of new module
-      newModule.scale(1, 1);
-      newModule.trigger("mousedown");
-
-      //Support drag to container
-      newModule
-        .on("mouseover", function(d) {
-          Canvas.hoverModule = d;
-        })
-        .on("mouseout", function(d) {
-          //Canvas.hoverModule = null;
-        })
-        ;
-
-      //Support resize & replacement
-      newModule.select(".control")
-        .on("mousedown", function() {
-          //persistent scale module
-          Canvas.scaleModule = Canvas.hoverModule;
-        });
-    });
 
 })();
 
