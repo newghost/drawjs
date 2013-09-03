@@ -57,11 +57,11 @@ body {
 
 /*hidden controls in the module group*/
 .container .control, 
-.asset .control {
+.noscale .control {
   display: none;
 }
 
-.asset .title {
+.noscale .title {
   fill: #000000;
   opacity: 0.3;
 }
@@ -366,9 +366,9 @@ var canvas = Canvas.target;
   Create Clonable Module
   */
   var moduleData = [
-      { x: 20, y: 20,  width: 60,   height: 20,  scaleX: 1,    scaleY: 1,    title: "ASSET", txtSize: "12px", classed: "asset", vertical: true, px: 20 }
-    , { x: 20, y: 70,  width: 100,   height: 300, scaleX: 0.2, scaleY: 0.2, title: "RACK",   txtSize: "62px", classed: "rack", py: 20, txtVertical: true}
-    , { x: 20, y: 150, width: 800,  height: 340, scaleX: 0.1,  scaleY: 0.1,  title: "ROW",    txtSize: "120px", classed: "row" }
+      { x: 20, y: 20,  width: 60,   height: 20,  scaleX: 1,    scaleY: 1,    title: "SOFA", txtSize: "12px",   classed: "sofa noscale", vertical: true, px: 20 }
+    , { x: 20, y: 70,  width: 100,   height: 300, scaleX: 0.2, scaleY: 0.2,  title: "ROOM",  txtSize: "62px",   classed: "room", py: 20, txtVertical: true}
+    , { x: 20, y: 150, width: 800,  height: 340, scaleX: 0.1,  scaleY: 0.1,  title: "HOUSE",   txtSize: "120px", classed: "house" }
   ];
 
   moduleData.forEach(function(moduleInfo) {
