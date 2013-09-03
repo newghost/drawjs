@@ -121,22 +121,6 @@ var Canvas = {
         canvas.curPoint.x = d3.event.pageX;
         canvas.curPoint.y = d3.event.pageY;
       });
-
-      //scale modules
-      var translateAndScale = function() {
-        if (canvas.scaleModule) {
-          var data = canvas.scaleModule; // scaleModule.data()[0];
-          data.scaleX = (d3.event.pageX - canvas.offset.left - data.x + 10) / data.width;
-          data.scaleY = (d3.event.pageY - canvas.offset.top  - data.y + 10) / data.height;
-          data.target.scale(data.scaleX, data.scaleY);
-        }
-      };
-
-      canvas.target
-        .on("mousemove.scale", translateAndScale)
-        .on("mouseup.scale", function() {
-          canvas.scaleModule = null;
-        });
     }
 };
 
@@ -234,9 +218,9 @@ var Connector = {
 
 var Module = {
     target: null
-  , x: 0, y: 0        //x & y position
-  , width:  100
-  , height: 100
+  , x: 0, y: 0                            //x & y position
+  , width:  100, height: 100
+  , originWidth: 100, originHeight: 100   //origin width & height
   , scaleX: 1
   , scaleY: 1
   , title:   ""
@@ -307,6 +291,8 @@ var Module = {
       var module = this;
       //override properties
       for (key in moduleInfo) module[key] = moduleInfo[key];
+      module.originWidth  = module.width;
+      module.originHeight = module.height;
 
       //Create module element
       var moduleTarget =
@@ -469,6 +455,32 @@ var canvas = Canvas.target;
   canvas.on("click", connectHandler);
   //connecting on canvas
   d3.select(document).on("mousemove", connecting);
+
+
+  /*
+  scale module, when touch on ".control" square
+  */
+  var translateAndScale = function() {
+    if (Canvas.scaleModule) {
+      var data = Canvas.scaleModule; // scaleModule.data()[0];
+      /*
+      update width & hiehgt, 10px is the padding in order to make sure the mouse hover on the ".control" square
+      */
+      data.width  = d3.event.pageX - Canvas.offset.left - data.x + 10;
+      data.height = d3.event.pageY - Canvas.offset.top  - data.y + 10;
+      data.scaleX = data.width / data.originWidth;
+      data.scaleY = data.height / data.originHeight;
+      data.target.scale(data.scaleX, data.scaleY);
+
+      updateConnected(Canvas.scaleModule.target);
+    }
+  };
+
+  canvas
+    .on("mousemove.scale", translateAndScale)
+    .on("mouseup.scale", function() {
+      Canvas.scaleModule = null;
+    });
 
 })();
 
