@@ -205,9 +205,8 @@ var Connector = {
   , stop: function(module) {
       var connector = this;
       //already connected?
-      if (module.size() > 0
-        //&& d3.event.target != d3.event.currentTarget
-        && !connector.startTarget.equal(module)) {
+      if ( module.size() > 0 && !connector.startTarget.equal(module)
+      ) {
         connector.endTarget = module;
         connector.update();
       } else {
@@ -451,14 +450,33 @@ var canvas = Canvas.target;
     });
   };
 
+  var findConnected = function(startTarget, endTarget) {
+    var existingPath = null;
+    d3.selectAll("path.connect").each(function(pathObject) {
+      if ( pathObject.startTarget && pathObject.endTarget
+        && (
+             (pathObject.startTarget.equal(startTarget) && pathObject.endTarget.equal(endTarget))
+          || (pathObject.startTarget.equal(endTarget)   && pathObject.endTarget.equal(startTarget))
+        )
+      ) {
+        return existingPath = pathObject;
+      }
+    });
+    return existingPath;
+  };
+
   var connectHandler = function() {
     var module = d3.select(d3.event.target).closest("module");
     //connect end?
     if (Canvas.mode == "connect") {
       if (curConnector) {
-        curConnector.stop(module);
+        //it's already connected?
+        findConnected(curConnector.startTarget, module)
+          ? curConnector.target.remove()
+          : curConnector.stop(module);
+
         curConnector = null;
-      } else if (module.size() > 0) {
+      } else {
         curConnector = Object.create(Connector).start(module);
       }
     }
