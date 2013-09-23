@@ -125,10 +125,15 @@ var Canvas = {
     }
   , serialization: function() {
       var canvas  = Canvas.target
-        , json    = {};
+        , json;
 
       var modules     = canvas.selectAll("g.module")
         , connectors  = canvas.selectAll("path.connector");
+
+      json = {
+          modules:    modules.data()
+        , connectors: connectors.data()
+      }
 
       return json;
     }
