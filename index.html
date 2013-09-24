@@ -80,22 +80,7 @@ body {
   <li><a name="dragToGroup">Grouping</a></li>
 </ul>
 
-<svg id="canvas" height="1200" width="1600">
-  <path d="M153 334
-  C153 334 151 334 151 334
-  C151 339 153 344 156 344
-  C164 344 171 339 171 334
-  C171 322 164 314 156 314
-  C142 314 131 322 131 334
-  C131 350 142 364 156 364
-  C175 364 191 350 191 334
-  C191 311 175 294 156 294
-  C131 294 111 311 111 334
-  C111 361 131 384 156 384
-  C186 384 211 361 211 334
-  C211 300 186 274 156 274"
-  style="fill:white;stroke:red;stroke-width:2"/>
-</svg>
+<svg id="canvas" height="1200" width="1600"></svg>
 
 <script>
 /*
@@ -108,6 +93,10 @@ var Canvas = {
   , hoverModule:  null
   , scaleModule:  null
   , mode: "drag"
+  , createID: function() {
+      //create a new unique ID for all the modules
+      return + new Date();
+    }
   , getCurPoint: function() {
       var curPoint = this.curPoint
         , offset   = this.offset
@@ -146,7 +135,8 @@ var Canvas = {
 Class
 */
 var Connector = {
-    target: null
+    id: 0
+  , target: null
   , type:   "Connector"
   , startTarget:  null
   , endTarget:    null
@@ -217,11 +207,14 @@ var Connector = {
       connector.target       = Canvas.target.append("path").classed("connector", true);
       connector.startTarget  = module;
       connector.target.data([connector]);
+      connector.id = Canvas.createID();
       //console.log("start", module);
+      connector.target.attr("id", function(d) { return d.id });
       return connector;
     }
   , stop: function(module) {
       var connector = this;
+
       //already connected?
       if ( module.size() > 0 && !connector.startTarget.equal(module)
       ) {
@@ -235,7 +228,8 @@ var Connector = {
 };
 
 var Module = {
-    target: null
+    id: 0
+  , target: null
   , type:   "Module"
   , x: 0, y: 0                            //x & y position
   , width:  100, height: 100
@@ -253,6 +247,7 @@ var Module = {
 
       newModule.scaleX = 1;
       newModule.scaleY = 1;
+      newModule.id = Canvas.createID();
       newModule.target = module.target.clone();
       newModule.target.data([newModule]);
 
@@ -261,6 +256,7 @@ var Module = {
       */
       //Support drag to container
       newModule.target
+        .attr("id", function(d) { return d.id })
         .on("mouseover", function(d) {
           Canvas.hoverModule = d;
         });
