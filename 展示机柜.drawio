@@ -6,20 +6,20 @@
         <mxCell id="1" parent="0" />
         <mxCell id="HGBA9uyzo-m6pvjth_hf-25" edge="1" parent="1" source="HGBA9uyzo-m6pvjth_hf-18" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=0.693;exitY=0.824;exitDx=0;exitDy=0;exitPerimeter=0;" target="HGBA9uyzo-m6pvjth_hf-23">
           <mxGeometry relative="1" as="geometry">
-            <mxPoint x="290" y="451.99999999999994" as="sourcePoint" />
+            <mxPoint x="170" y="395.0899999999999" as="sourcePoint" />
           </mxGeometry>
         </mxCell>
         <mxCell id="HGBA9uyzo-m6pvjth_hf-18" parent="1" style="shape=mxgraph.networks2.icon;aspect=fixed;fillColor=#EDEDED;strokeColor=#000000;gradientColor=#5B6163;network2IconShadow=1;network2bgFillColor=none;labelPosition=center;verticalLabelPosition=bottom;align=center;verticalAlign=top;network2Icon=mxgraph.networks2.cctv;network2IconXOffset=-0.0002;network2IconYOffset=-0.0355;network2IconW=1.0004;network2IconH=0.7279;" value="" vertex="1">
-          <mxGeometry height="36.394999999999996" width="50.019999999999996" x="260" y="439.81" as="geometry" />
+          <mxGeometry height="36.394999999999996" width="50.019999999999996" x="140" y="382.9" as="geometry" />
         </mxCell>
         <mxCell id="HGBA9uyzo-m6pvjth_hf-23" parent="1" style="html=1;verticalLabelPosition=bottom;verticalAlign=top;outlineConnect=0;shadow=0;dashed=0;shape=mxgraph.rack.hpe_aruba.gateways_controllers.aruba_9004_4_port_gbe_gateway_back;" value="" vertex="1">
-          <mxGeometry height="30" width="160" x="295" y="287.7" as="geometry" />
+          <mxGeometry height="30" width="160" x="175" y="230.79" as="geometry" />
         </mxCell>
         <mxCell id="5baD_fVPrP1Dpk0Kb6Is-13" edge="1" parent="1" source="HGBA9uyzo-m6pvjth_hf-26" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;" target="HGBA9uyzo-m6pvjth_hf-23" value="">
           <mxGeometry relative="1" as="geometry">
             <Array as="points">
-              <mxPoint x="370" y="240" />
-              <mxPoint x="370" y="240" />
+              <mxPoint x="250" y="183.09" />
+              <mxPoint x="250" y="183.09" />
             </Array>
           </mxGeometry>
         </mxCell>
@@ -32,7 +32,7 @@
           </mxGeometry>
         </mxCell>
         <mxCell id="HGBA9uyzo-m6pvjth_hf-26" parent="1" style="sketch=0;html=1;pointerEvents=1;dashed=0;fillColor=#036897;strokeColor=#ffffff;strokeWidth=2;verticalLabelPosition=bottom;verticalAlign=top;align=center;outlineConnect=0;shape=mxgraph.cisco.computers_and_peripherals.ibm_mainframe;" value="RK3588 AI 边缘计算&lt;div&gt;OpenCV 视频图像分析&lt;/div&gt;" vertex="1">
-          <mxGeometry height="70" width="50" x="346" y="130" as="geometry" />
+          <mxGeometry height="70" width="50" x="226" y="73.09" as="geometry" />
         </mxCell>
         <mxCell id="HGBA9uyzo-m6pvjth_hf-28" parent="1" style="shape=ext;margin=3;double=1;whiteSpace=wrap;html=1;align=center;" value="汇川远程IO" vertex="1">
           <mxGeometry height="30" width="130" x="620" y="369.33000000000004" as="geometry" />
@@ -56,7 +56,7 @@
         </mxCell>
         <mxCell id="HGBA9uyzo-m6pvjth_hf-33" edge="1" parent="1" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;" target="HGBA9uyzo-m6pvjth_hf-23">
           <mxGeometry relative="1" as="geometry">
-            <mxPoint x="414" y="439.80999999999995" as="sourcePoint" />
+            <mxPoint x="294" y="382.9" as="sourcePoint" />
           </mxGeometry>
         </mxCell>
         <mxCell id="5baD_fVPrP1Dpk0Kb6Is-12" connectable="0" parent="HGBA9uyzo-m6pvjth_hf-33" style="edgeLabel;html=1;align=center;verticalAlign=middle;resizable=0;points=[];" value="POE供电网线" vertex="1">
@@ -65,10 +65,10 @@
           </mxGeometry>
         </mxCell>
         <mxCell id="HGBA9uyzo-m6pvjth_hf-37" parent="1" style="text;html=1;whiteSpace=wrap;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;rounded=0;" value="POE路由器" vertex="1">
-          <mxGeometry height="30" width="96" x="280" y="257.7" as="geometry" />
+          <mxGeometry height="30" width="96" x="160" y="200.79" as="geometry" />
         </mxCell>
         <mxCell id="HGBA9uyzo-m6pvjth_hf-42" parent="1" style="ellipse;whiteSpace=wrap;html=1;aspect=fixed;" value="红外" vertex="1">
-          <mxGeometry height="30" width="30" x="295" y="423.01" as="geometry" />
+          <mxGeometry height="30" width="30" x="175" y="366.1" as="geometry" />
         </mxCell>
         <mxCell id="HGBA9uyzo-m6pvjth_hf-48" parent="1" style="rounded=1;whiteSpace=wrap;html=1;absoluteArcSize=1;arcSize=14;strokeWidth=2;" value="LED灯带" vertex="1">
           <mxGeometry height="70" width="30" x="740" y="444.64" as="geometry" />
@@ -82,25 +82,25 @@
           </mxGeometry>
         </mxCell>
         <mxCell id="HGBA9uyzo-m6pvjth_hf-52" parent="1" style="text;html=1;whiteSpace=wrap;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;rounded=0;" value="192.168.5.1" vertex="1">
-          <mxGeometry height="30" width="90" x="240.01" y="317.7" as="geometry" />
+          <mxGeometry height="30" width="90" x="120.00999999999999" y="260.78999999999996" as="geometry" />
         </mxCell>
         <mxCell id="HGBA9uyzo-m6pvjth_hf-53" parent="1" style="text;html=1;whiteSpace=wrap;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;rounded=0;" value="192.168.5.2" vertex="1">
-          <mxGeometry height="30" width="90" x="200" y="413.5" as="geometry" />
+          <mxGeometry height="30" width="90" x="80" y="356.59000000000003" as="geometry" />
         </mxCell>
         <mxCell id="HGBA9uyzo-m6pvjth_hf-54" parent="1" style="text;html=1;whiteSpace=wrap;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;rounded=0;" value="192.168.5.3" vertex="1">
-          <mxGeometry height="30" width="90" x="325" y="420" as="geometry" />
+          <mxGeometry height="30" width="90" x="205" y="363.09000000000003" as="geometry" />
         </mxCell>
         <mxCell id="5baD_fVPrP1Dpk0Kb6Is-1" parent="1" style="image;html=1;image=img/lib/clip_art/networking/Ip_Camera_128x128.png" value="" vertex="1">
-          <mxGeometry height="53.1" width="49.14" x="396" y="428.9" as="geometry" />
+          <mxGeometry height="53.1" width="49.14" x="276" y="371.99" as="geometry" />
         </mxCell>
         <mxCell id="HGBA9uyzo-m6pvjth_hf-44" parent="1" style="ellipse;whiteSpace=wrap;html=1;aspect=fixed;fillColor=#008a00;fontColor=#ffffff;strokeColor=#005700;" value="视频" vertex="1">
-          <mxGeometry height="30" width="30" x="420" y="423.01" as="geometry" />
+          <mxGeometry height="30" width="30" x="300" y="366.1" as="geometry" />
         </mxCell>
         <mxCell id="5baD_fVPrP1Dpk0Kb6Is-6" parent="1" style="shape=ext;margin=3;double=1;whiteSpace=wrap;html=1;align=center;" value="EtherCat耦合器" vertex="1">
           <mxGeometry height="30" width="130" x="620" y="339.33000000000004" as="geometry" />
         </mxCell>
         <mxCell id="5baD_fVPrP1Dpk0Kb6Is-18" parent="1" style="strokeColor=#666666;html=1;labelPosition=right;align=left;spacingLeft=15;shadow=0;dashed=0;outlineConnect=0;shape=mxgraph.rack.f5.viprion_4800;" value="" vertex="1">
-          <mxGeometry height="76.19" width="40" x="200.01" y="126.91" as="geometry" />
+          <mxGeometry height="76.19" width="40" x="80.00999999999999" y="70" as="geometry" />
         </mxCell>
         <mxCell id="5baD_fVPrP1Dpk0Kb6Is-24" parent="1" style="shape=ext;margin=3;double=1;whiteSpace=wrap;html=1;align=center;" value="&lt;div&gt;Modbus TCP&lt;/div&gt;&lt;div&gt;新力川远程IO&lt;/div&gt;" vertex="1">
           <mxGeometry height="50.9" width="130" x="810" y="344.45000000000005" as="geometry" />
@@ -137,7 +137,7 @@
           <mxGeometry height="70" width="94.34" x="610.66" y="56.91000000000001" as="geometry" />
         </mxCell>
         <mxCell id="5baD_fVPrP1Dpk0Kb6Is-44" parent="1" style="verticalLabelPosition=bottom;verticalAlign=top;html=1;shadow=0;dashed=0;strokeWidth=1;shape=mxgraph.ios.iPad;bgStyle=bgGreen;fillColor=#aaaaaa;sketch=0;" value="HMI 人机接口&lt;div&gt;控制终端&lt;/div&gt;" vertex="1">
-          <mxGeometry height="87.2" width="67.67" x="1310" y="161.4" as="geometry" />
+          <mxGeometry height="87.2" width="67.67" x="1310" y="172.19" as="geometry" />
         </mxCell>
         <mxCell id="5baD_fVPrP1Dpk0Kb6Is-45" parent="1" style="sketch=0;html=1;pointerEvents=1;dashed=0;fillColor=#036897;strokeColor=#ffffff;strokeWidth=2;verticalLabelPosition=bottom;verticalAlign=top;align=center;outlineConnect=0;shape=mxgraph.cisco.computers_and_peripherals.ibm_mainframe;" value="RK3568 工控机&lt;span style=&quot;background-color: transparent; color: light-dark(rgb(0, 0, 0), rgb(255, 255, 255));&quot;&gt;&amp;nbsp;&lt;/span&gt;" vertex="1">
           <mxGeometry height="70" width="50" x="860" y="56.91" as="geometry" />
@@ -154,11 +154,20 @@
         <mxCell id="5baD_fVPrP1Dpk0Kb6Is-54" edge="1" parent="1" source="5baD_fVPrP1Dpk0Kb6Is-46" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;" target="5baD_fVPrP1Dpk0Kb6Is-37">
           <mxGeometry relative="1" as="geometry" />
         </mxCell>
-        <mxCell id="5baD_fVPrP1Dpk0Kb6Is-46" parent="1" style="html=1;verticalLabelPosition=bottom;verticalAlign=top;outlineConnect=0;shadow=0;dashed=0;shape=mxgraph.rack.hpe_aruba.gateways_controllers.aruba_9004_4_port_gbe_gateway_back;" value="" vertex="1">
-          <mxGeometry height="30" width="160" x="805" y="190" as="geometry" />
+        <mxCell id="5baD_fVPrP1Dpk0Kb6Is-46" parent="1" style="html=1;verticalLabelPosition=bottom;verticalAlign=top;outlineConnect=0;shadow=0;dashed=0;shape=mxgraph.rack.hpe_aruba.gateways_controllers.aruba_9004_4_port_gbe_gateway_back;" value="无线WIFI路由器&lt;div&gt;192.168.7.1&lt;/div&gt;&lt;div&gt;&lt;br&gt;&lt;/div&gt;" vertex="1">
+          <mxGeometry height="30" width="160" x="805" y="200.79" as="geometry" />
         </mxCell>
         <mxCell id="5baD_fVPrP1Dpk0Kb6Is-53" edge="1" parent="1" source="5baD_fVPrP1Dpk0Kb6Is-46" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;entryX=0.58;entryY=0.172;entryDx=0;entryDy=0;entryPerimeter=0;" target="5baD_fVPrP1Dpk0Kb6Is-24">
           <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="5baD_fVPrP1Dpk0Kb6Is-61" edge="1" parent="1" source="5baD_fVPrP1Dpk0Kb6Is-60" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;" target="5baD_fVPrP1Dpk0Kb6Is-37">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="5baD_fVPrP1Dpk0Kb6Is-60" parent="1" style="verticalLabelPosition=middle;shadow=0;dashed=0;align=center;html=1;verticalAlign=middle;strokeWidth=1;shape=ellipse;aspect=fixed;fontSize=35;" value="M" vertex="1">
+          <mxGeometry height="60" width="60" x="1025" y="425.09" as="geometry" />
+        </mxCell>
+        <mxCell id="5baD_fVPrP1Dpk0Kb6Is-62" parent="1" style="text;html=1;whiteSpace=wrap;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;rounded=0;" value="电动马达" vertex="1">
+          <mxGeometry height="30" width="60" x="1025" y="485.09" as="geometry" />
         </mxCell>
       </root>
     </mxGraphModel>
