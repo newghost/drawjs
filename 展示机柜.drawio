@@ -1,6 +1,6 @@
 <mxfile host="app.diagrams.net" agent="Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/146.0.0.0 Safari/537.36 Edg/146.0.0.0" version="29.6.6">
   <diagram name="第 1 页" id="purWPL5MVNEhUzBpqtAV">
-    <mxGraphModel dx="1498" dy="776" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="1169" pageHeight="827" math="0" shadow="0">
+    <mxGraphModel dx="1498" dy="1603" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="1169" pageHeight="827" math="0" shadow="0">
       <root>
         <mxCell id="0" />
         <mxCell id="1" parent="0" />
@@ -134,31 +134,46 @@
           <mxGeometry relative="1" as="geometry" />
         </mxCell>
         <mxCell id="5baD_fVPrP1Dpk0Kb6Is-39" parent="1" style="shape=mxgraph.networks2.icon;aspect=fixed;fillColor=#EDEDED;strokeColor=#000000;gradientColor=#5B6163;network2IconShadow=1;network2bgFillColor=none;labelPosition=center;verticalLabelPosition=bottom;align=center;verticalAlign=top;network2Icon=mxgraph.networks2.monitor;network2IconYOffset=-0.009;network2IconW=1;network2IconH=0.742;" value="HMI监控&#xa;" vertex="1">
-          <mxGeometry height="70" width="94.34" x="610.66" y="56.91000000000001" as="geometry" />
+          <mxGeometry height="74.2" width="100" x="660" y="54.809999999999995" as="geometry" />
         </mxCell>
         <mxCell id="5baD_fVPrP1Dpk0Kb6Is-44" parent="1" style="verticalLabelPosition=bottom;verticalAlign=top;html=1;shadow=0;dashed=0;strokeWidth=1;shape=mxgraph.ios.iPad;bgStyle=bgGreen;fillColor=#aaaaaa;sketch=0;" value="HMI 人机接口&lt;div&gt;控制终端&lt;/div&gt;" vertex="1">
-          <mxGeometry height="87.2" width="67.67" x="1310" y="172.19" as="geometry" />
+          <mxGeometry height="87.2" width="67.67" x="1310" y="210" as="geometry" />
         </mxCell>
         <mxCell id="5baD_fVPrP1Dpk0Kb6Is-45" parent="1" style="sketch=0;html=1;pointerEvents=1;dashed=0;fillColor=#036897;strokeColor=#ffffff;strokeWidth=2;verticalLabelPosition=bottom;verticalAlign=top;align=center;outlineConnect=0;shape=mxgraph.cisco.computers_and_peripherals.ibm_mainframe;" value="RK3568 工控机&lt;span style=&quot;background-color: transparent; color: light-dark(rgb(0, 0, 0), rgb(255, 255, 255));&quot;&gt;&amp;nbsp;&lt;/span&gt;" vertex="1">
           <mxGeometry height="70" width="50" x="860" y="56.91" as="geometry" />
         </mxCell>
-        <mxCell id="5baD_fVPrP1Dpk0Kb6Is-47" edge="1" parent="1" source="5baD_fVPrP1Dpk0Kb6Is-46" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;dashed=1;" target="5baD_fVPrP1Dpk0Kb6Is-44">
-          <mxGeometry relative="1" as="geometry" />
+        <mxCell id="5baD_fVPrP1Dpk0Kb6Is-47" edge="1" parent="1" source="5baD_fVPrP1Dpk0Kb6Is-63" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;dashed=1;exitX=0.804;exitY=1.011;exitDx=0;exitDy=0;exitPerimeter=0;" target="5baD_fVPrP1Dpk0Kb6Is-44">
+          <mxGeometry relative="1" as="geometry">
+            <mxPoint x="965.0000000000005" y="215.76470588235293" as="sourcePoint" />
+          </mxGeometry>
         </mxCell>
-        <mxCell id="5baD_fVPrP1Dpk0Kb6Is-49" edge="1" parent="1" source="5baD_fVPrP1Dpk0Kb6Is-46" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;" target="5baD_fVPrP1Dpk0Kb6Is-45">
-          <mxGeometry relative="1" as="geometry" />
+        <mxCell id="5baD_fVPrP1Dpk0Kb6Is-49" edge="1" parent="1" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;" target="5baD_fVPrP1Dpk0Kb6Is-45">
+          <mxGeometry relative="1" as="geometry">
+            <mxPoint x="885" y="200.78999999999996" as="sourcePoint" />
+          </mxGeometry>
         </mxCell>
-        <mxCell id="5baD_fVPrP1Dpk0Kb6Is-52" edge="1" parent="1" source="5baD_fVPrP1Dpk0Kb6Is-46" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;" target="5baD_fVPrP1Dpk0Kb6Is-6">
-          <mxGeometry relative="1" as="geometry" />
+        <mxCell id="5baD_fVPrP1Dpk0Kb6Is-52" edge="1" parent="1" source="5baD_fVPrP1Dpk0Kb6Is-63" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=0.012;exitY=0.825;exitDx=0;exitDy=0;exitPerimeter=0;" target="5baD_fVPrP1Dpk0Kb6Is-6">
+          <mxGeometry relative="1" as="geometry">
+            <Array as="points">
+              <mxPoint x="850" y="219" />
+              <mxPoint x="850" y="260" />
+              <mxPoint x="720" y="260" />
+            </Array>
+            <mxPoint x="805" y="215.76470588235293" as="sourcePoint" />
+          </mxGeometry>
         </mxCell>
-        <mxCell id="5baD_fVPrP1Dpk0Kb6Is-54" edge="1" parent="1" source="5baD_fVPrP1Dpk0Kb6Is-46" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;" target="5baD_fVPrP1Dpk0Kb6Is-37">
-          <mxGeometry relative="1" as="geometry" />
+        <mxCell id="5baD_fVPrP1Dpk0Kb6Is-54" edge="1" parent="1" source="5baD_fVPrP1Dpk0Kb6Is-63" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=1.016;exitY=0.797;exitDx=0;exitDy=0;exitPerimeter=0;" target="5baD_fVPrP1Dpk0Kb6Is-37">
+          <mxGeometry relative="1" as="geometry">
+            <Array as="points">
+              <mxPoint x="1080" y="217" />
+            </Array>
+            <mxPoint x="965.0000000000005" y="215.76470588235293" as="sourcePoint" />
+          </mxGeometry>
         </mxCell>
-        <mxCell id="5baD_fVPrP1Dpk0Kb6Is-46" parent="1" style="html=1;verticalLabelPosition=bottom;verticalAlign=top;outlineConnect=0;shadow=0;dashed=0;shape=mxgraph.rack.hpe_aruba.gateways_controllers.aruba_9004_4_port_gbe_gateway_back;" value="无线WIFI路由器&lt;div&gt;192.168.7.1&lt;/div&gt;&lt;div&gt;&lt;br&gt;&lt;/div&gt;" vertex="1">
-          <mxGeometry height="30" width="160" x="805" y="200.79" as="geometry" />
-        </mxCell>
-        <mxCell id="5baD_fVPrP1Dpk0Kb6Is-53" edge="1" parent="1" source="5baD_fVPrP1Dpk0Kb6Is-46" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;entryX=0.58;entryY=0.172;entryDx=0;entryDy=0;entryPerimeter=0;" target="5baD_fVPrP1Dpk0Kb6Is-24">
-          <mxGeometry relative="1" as="geometry" />
+        <mxCell id="5baD_fVPrP1Dpk0Kb6Is-53" edge="1" parent="1" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;entryX=0.58;entryY=0.172;entryDx=0;entryDy=0;entryPerimeter=0;" target="5baD_fVPrP1Dpk0Kb6Is-24">
+          <mxGeometry relative="1" as="geometry">
+            <mxPoint x="885.0588235294117" y="230.78999999999996" as="sourcePoint" />
+          </mxGeometry>
         </mxCell>
         <mxCell id="5baD_fVPrP1Dpk0Kb6Is-61" edge="1" parent="1" source="5baD_fVPrP1Dpk0Kb6Is-60" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;" target="5baD_fVPrP1Dpk0Kb6Is-37">
           <mxGeometry relative="1" as="geometry" />
@@ -168,6 +183,69 @@
         </mxCell>
         <mxCell id="5baD_fVPrP1Dpk0Kb6Is-62" parent="1" style="text;html=1;whiteSpace=wrap;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;rounded=0;" value="电动马达" vertex="1">
           <mxGeometry height="30" width="60" x="1025" y="485.09" as="geometry" />
+        </mxCell>
+        <mxCell id="5baD_fVPrP1Dpk0Kb6Is-63" parent="1" style="fillColorStyles=neutralFill;neutralFill=#9DA6A8;shape=mxgraph.networks2.icon;aspect=fixed;fillColor=#EDEDED;strokeColor=#000000;gradientColor=#5B6163;network2IconShadow=1;network2bgFillColor=none;labelPosition=center;verticalLabelPosition=bottom;align=center;verticalAlign=top;network2Icon=mxgraph.networks2.wireless_hub;network2IconYOffset=-0.1142;network2IconW=1;network2IconH=0.5485;" value="无线WIFI&#xa;192.168.5.1&#xa;" vertex="1">
+          <mxGeometry height="65.82" width="120" x="830" y="164.97" as="geometry" />
+        </mxCell>
+        <mxCell id="5baD_fVPrP1Dpk0Kb6Is-71" edge="1" parent="1" source="5baD_fVPrP1Dpk0Kb6Is-66" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;" target="5baD_fVPrP1Dpk0Kb6Is-70">
+          <mxGeometry relative="1" as="geometry">
+            <Array as="points">
+              <mxPoint x="660" y="-10" />
+              <mxPoint x="500" y="-10" />
+            </Array>
+            <mxPoint x="776.7399999999998" y="-60" as="sourcePoint" />
+            <mxPoint x="499.7647058823529" y="189.97000000000003" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="5baD_fVPrP1Dpk0Kb6Is-72" edge="1" parent="1" source="5baD_fVPrP1Dpk0Kb6Is-64" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;entryX=1;entryY=0.5;entryDx=0;entryDy=0;" target="5baD_fVPrP1Dpk0Kb6Is-60">
+          <mxGeometry relative="1" as="geometry">
+            <Array as="points">
+              <mxPoint x="1150" y="-85" />
+              <mxPoint x="1150" y="455" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="5baD_fVPrP1Dpk0Kb6Is-64" parent="1" style="html=1;verticalLabelPosition=bottom;verticalAlign=top;outlineConnect=0;shadow=0;dashed=0;shape=mxgraph.rack.hpe_aruba.switches.j9830b_5400r_2750w_poeplus_zl2_power_supply;" value="48v" vertex="1">
+          <mxGeometry height="50" width="73.26" x="776.74" y="-110" as="geometry" />
+        </mxCell>
+        <mxCell id="5baD_fVPrP1Dpk0Kb6Is-81" edge="1" parent="1" source="5baD_fVPrP1Dpk0Kb6Is-70" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=1;exitY=0.5;exitDx=0;exitDy=0;exitPerimeter=0;" target="5baD_fVPrP1Dpk0Kb6Is-45">
+          <mxGeometry relative="1" as="geometry">
+            <Array as="points">
+              <mxPoint x="580" y="300" />
+              <mxPoint x="580" y="10" />
+              <mxPoint x="885" y="10" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="5baD_fVPrP1Dpk0Kb6Is-66" parent="1" style="html=1;verticalLabelPosition=bottom;verticalAlign=top;outlineConnect=0;shadow=0;dashed=0;shape=mxgraph.rack.hpe_aruba.switches.j9829a_5400r_1100w_poeplus_zl2_power_supply;" value="12v" vertex="1">
+          <mxGeometry height="43" width="63" x="630.24" y="-110" as="geometry" />
+        </mxCell>
+        <mxCell id="5baD_fVPrP1Dpk0Kb6Is-73" edge="1" parent="1" source="5baD_fVPrP1Dpk0Kb6Is-70" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;" target="5baD_fVPrP1Dpk0Kb6Is-6">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="5baD_fVPrP1Dpk0Kb6Is-74" edge="1" parent="1" source="5baD_fVPrP1Dpk0Kb6Is-70" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;entryX=0.25;entryY=0;entryDx=0;entryDy=0;" target="5baD_fVPrP1Dpk0Kb6Is-24">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="5baD_fVPrP1Dpk0Kb6Is-77" edge="1" parent="1" source="5baD_fVPrP1Dpk0Kb6Is-70" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;entryX=0.5;entryY=0;entryDx=0;entryDy=0;" target="5baD_fVPrP1Dpk0Kb6Is-37">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="5baD_fVPrP1Dpk0Kb6Is-70" parent="1" style="outlineConnect=0;dashed=0;verticalLabelPosition=bottom;verticalAlign=top;align=center;html=1;shape=mxgraph.aws3.police_emergency;fillColor=#5294CF;gradientColor=none;" value="分线器" vertex="1">
+          <mxGeometry height="79.5" width="79.5" x="460" y="259.83" as="geometry" />
+        </mxCell>
+        <mxCell id="5baD_fVPrP1Dpk0Kb6Is-78" parent="1" style="html=1;verticalLabelPosition=bottom;verticalAlign=top;outlineConnect=0;shadow=0;dashed=0;shape=mxgraph.rack.hpe_aruba.switches.j9829a_5400r_1100w_poeplus_zl2_power_supply;" value="12v" vertex="1">
+          <mxGeometry height="43" width="63" x="283.5" y="-80" as="geometry" />
+        </mxCell>
+        <mxCell id="5baD_fVPrP1Dpk0Kb6Is-83" edge="1" parent="1" source="5baD_fVPrP1Dpk0Kb6Is-70" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;entryX=0.004;entryY=0.701;entryDx=0;entryDy=0;entryPerimeter=0;" target="5baD_fVPrP1Dpk0Kb6Is-63">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="5baD_fVPrP1Dpk0Kb6Is-85" edge="1" parent="1" source="5baD_fVPrP1Dpk0Kb6Is-84" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;" target="5baD_fVPrP1Dpk0Kb6Is-66">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="5baD_fVPrP1Dpk0Kb6Is-86" edge="1" parent="1" source="5baD_fVPrP1Dpk0Kb6Is-84" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;" target="5baD_fVPrP1Dpk0Kb6Is-64">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="5baD_fVPrP1Dpk0Kb6Is-84" parent="1" style="image;aspect=fixed;html=1;points=[];align=center;fontSize=12;image=img/lib/azure2/general/Power.svg;" value="220v 空开" vertex="1">
+          <mxGeometry height="68" width="44" x="470" y="-122.5" as="geometry" />
         </mxCell>
       </root>
     </mxGraphModel>
