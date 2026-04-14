@@ -1,6 +1,6 @@
 <mxfile host="app.diagrams.net" agent="Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/146.0.0.0 Safari/537.36 Edg/146.0.0.0" version="29.6.6">
   <diagram name="第 1 页" id="purWPL5MVNEhUzBpqtAV">
-    <mxGraphModel dx="1723" dy="1927" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="1169" pageHeight="827" math="0" shadow="0">
+    <mxGraphModel dx="1477" dy="1770" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="1169" pageHeight="827" math="0" shadow="0">
       <root>
         <mxCell id="0" />
         <mxCell id="1" parent="0" />
@@ -28,19 +28,6 @@
         </mxCell>
         <mxCell id="5baD_fVPrP1Dpk0Kb6Is-20" connectable="0" parent="5baD_fVPrP1Dpk0Kb6Is-19" style="edgeLabel;html=1;align=center;verticalAlign=middle;resizable=0;points=[];" value="RAID0&lt;div&gt;冗余&lt;span style=&quot;background-color: light-dark(#ffffff, var(--ge-dark-color, #121212)); color: light-dark(rgb(0, 0, 0), rgb(255, 255, 255));&quot;&gt;存储阵列&lt;/span&gt;&lt;/div&gt;" vertex="1">
           <mxGeometry relative="1" x="-0.2554" y="-2" as="geometry">
-            <mxPoint as="offset" />
-          </mxGeometry>
-        </mxCell>
-        <mxCell id="5baD_fVPrP1Dpk0Kb6Is-94" edge="1" parent="1" source="HGBA9uyzo-m6pvjth_hf-26" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;strokeWidth=5;" target="5baD_fVPrP1Dpk0Kb6Is-78">
-          <mxGeometry relative="1" as="geometry">
-            <Array as="points">
-              <mxPoint x="251" y="34" />
-              <mxPoint x="240" y="34" />
-            </Array>
-          </mxGeometry>
-        </mxCell>
-        <mxCell id="5baD_fVPrP1Dpk0Kb6Is-114" connectable="0" parent="5baD_fVPrP1Dpk0Kb6Is-94" style="edgeLabel;html=1;align=center;verticalAlign=middle;resizable=0;points=[];" value="DC" vertex="1">
-          <mxGeometry relative="1" x="-0.2022" y="-1" as="geometry">
             <mxPoint as="offset" />
           </mxGeometry>
         </mxCell>
@@ -94,7 +81,7 @@
             <mxPoint as="offset" />
           </mxGeometry>
         </mxCell>
-        <mxCell id="HGBA9uyzo-m6pvjth_hf-52" parent="1" style="text;html=1;whiteSpace=wrap;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;rounded=0;" value="192.168.5.1" vertex="1">
+        <mxCell id="HGBA9uyzo-m6pvjth_hf-52" parent="1" style="text;html=1;whiteSpace=wrap;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;rounded=0;" value="192.168.3.1" vertex="1">
           <mxGeometry height="30" width="90" x="120.00999999999999" y="260.78999999999996" as="geometry" />
         </mxCell>
         <mxCell id="HGBA9uyzo-m6pvjth_hf-53" parent="1" style="text;html=1;whiteSpace=wrap;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;rounded=0;" value="192.168.5.2" vertex="1">
@@ -249,6 +236,14 @@
         <mxCell id="5baD_fVPrP1Dpk0Kb6Is-112" connectable="0" parent="5baD_fVPrP1Dpk0Kb6Is-98" style="edgeLabel;html=1;align=center;verticalAlign=middle;resizable=0;points=[];" value="AC" vertex="1">
           <mxGeometry relative="1" x="-0.1495" y="1" as="geometry">
             <mxPoint as="offset" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="5baD_fVPrP1Dpk0Kb6Is-122" edge="1" parent="1" source="5baD_fVPrP1Dpk0Kb6Is-78" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;strokeWidth=5;" target="HGBA9uyzo-m6pvjth_hf-26">
+          <mxGeometry relative="1" as="geometry">
+            <Array as="points">
+              <mxPoint x="240" y="38" />
+              <mxPoint x="251" y="38" />
+            </Array>
           </mxGeometry>
         </mxCell>
         <mxCell id="5baD_fVPrP1Dpk0Kb6Is-78" parent="1" style="html=1;verticalLabelPosition=bottom;verticalAlign=top;outlineConnect=0;shadow=0;dashed=0;shape=mxgraph.rack.hpe_aruba.switches.j9829a_5400r_1100w_poeplus_zl2_power_supply;" value="12v" vertex="1">
