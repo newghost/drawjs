@@ -286,9 +286,6 @@
         <mxCell id="5baD_fVPrP1Dpk0Kb6Is-93" parent="1" style="image;aspect=fixed;html=1;points=[];align=center;fontSize=12;image=img/lib/azure2/general/Power.svg;" value="220v 空开" vertex="1">
           <mxGeometry height="68" width="44" x="78.01" y="-68" as="geometry" />
         </mxCell>
-        <mxCell id="5baD_fVPrP1Dpk0Kb6Is-101" parent="1" style="whiteSpace=wrap;html=1;aspect=fixed;" value="" vertex="1">
-          <mxGeometry height="80" width="80" x="600" y="150" as="geometry" />
-        </mxCell>
         <mxCell id="5baD_fVPrP1Dpk0Kb6Is-105" parent="1" style="swimlane;whiteSpace=wrap;html=1;" value="OT控制柜" vertex="1">
           <mxGeometry height="820" width="900" x="560" y="-160" as="geometry" />
         </mxCell>
