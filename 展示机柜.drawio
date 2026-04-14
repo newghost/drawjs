@@ -1,6 +1,6 @@
 <mxfile host="app.diagrams.net" agent="Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/146.0.0.0 Safari/537.36 Edg/146.0.0.0" version="29.6.6">
   <diagram name="第 1 页" id="purWPL5MVNEhUzBpqtAV">
-    <mxGraphModel dx="1723" dy="1927" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="1169" pageHeight="827" math="0" shadow="0">
+    <mxGraphModel dx="2068" dy="2147" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="1169" pageHeight="827" math="0" shadow="0">
       <root>
         <mxCell id="0" />
         <mxCell id="1" parent="0" />
@@ -40,6 +40,11 @@
               <mxPoint x="251" y="34" />
               <mxPoint x="240" y="34" />
             </Array>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="5baD_fVPrP1Dpk0Kb6Is-114" connectable="0" parent="5baD_fVPrP1Dpk0Kb6Is-94" style="edgeLabel;html=1;align=center;verticalAlign=middle;resizable=0;points=[];" value="DC" vertex="1">
+          <mxGeometry relative="1" x="-0.2022" y="-1" as="geometry">
+            <mxPoint as="offset" />
           </mxGeometry>
         </mxCell>
         <mxCell id="HGBA9uyzo-m6pvjth_hf-26" parent="1" style="sketch=0;html=1;pointerEvents=1;dashed=0;fillColor=#036897;strokeColor=#ffffff;strokeWidth=2;verticalLabelPosition=bottom;verticalAlign=top;align=center;outlineConnect=0;shape=mxgraph.cisco.computers_and_peripherals.ibm_mainframe;" value="RK3588 AI 边缘计算&lt;div&gt;OpenCV 视频图像分析&lt;/div&gt;" vertex="1">
@@ -221,6 +226,11 @@
             </Array>
           </mxGeometry>
         </mxCell>
+        <mxCell id="5baD_fVPrP1Dpk0Kb6Is-106" connectable="0" parent="5baD_fVPrP1Dpk0Kb6Is-72" style="edgeLabel;html=1;align=center;verticalAlign=middle;resizable=0;points=[];" value="DC" vertex="1">
+          <mxGeometry relative="1" x="-0.6573" y="-5" as="geometry">
+            <mxPoint as="offset" />
+          </mxGeometry>
+        </mxCell>
         <mxCell id="5baD_fVPrP1Dpk0Kb6Is-64" parent="1" style="html=1;verticalLabelPosition=bottom;verticalAlign=top;outlineConnect=0;shadow=0;dashed=0;shape=mxgraph.rack.hpe_aruba.switches.j9830b_5400r_2750w_poeplus_zl2_power_supply;" value="48v" vertex="1">
           <mxGeometry height="50" width="73.26" x="966.74" y="-97.5" as="geometry" />
         </mxCell>
@@ -239,6 +249,11 @@
         <mxCell id="5baD_fVPrP1Dpk0Kb6Is-98" edge="1" parent="1" source="5baD_fVPrP1Dpk0Kb6Is-78" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;strokeWidth=5;" target="5baD_fVPrP1Dpk0Kb6Is-87">
           <mxGeometry relative="1" as="geometry" />
         </mxCell>
+        <mxCell id="5baD_fVPrP1Dpk0Kb6Is-112" connectable="0" parent="5baD_fVPrP1Dpk0Kb6Is-98" style="edgeLabel;html=1;align=center;verticalAlign=middle;resizable=0;points=[];" value="AC" vertex="1">
+          <mxGeometry relative="1" x="-0.1495" y="1" as="geometry">
+            <mxPoint as="offset" />
+          </mxGeometry>
+        </mxCell>
         <mxCell id="5baD_fVPrP1Dpk0Kb6Is-78" parent="1" style="html=1;verticalLabelPosition=bottom;verticalAlign=top;outlineConnect=0;shadow=0;dashed=0;shape=mxgraph.rack.hpe_aruba.switches.j9829a_5400r_1100w_poeplus_zl2_power_supply;" value="12v" vertex="1">
           <mxGeometry height="52" width="76.19" x="226" y="-50" as="geometry" />
         </mxCell>
@@ -248,12 +263,24 @@
         <mxCell id="5baD_fVPrP1Dpk0Kb6Is-85" edge="1" parent="1" source="5baD_fVPrP1Dpk0Kb6Is-84" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;" target="5baD_fVPrP1Dpk0Kb6Is-66">
           <mxGeometry relative="1" as="geometry" />
         </mxCell>
-        <mxCell id="5baD_fVPrP1Dpk0Kb6Is-86" edge="1" parent="1" source="5baD_fVPrP1Dpk0Kb6Is-84" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;strokeWidth=5;" target="5baD_fVPrP1Dpk0Kb6Is-64">
+        <mxCell id="5baD_fVPrP1Dpk0Kb6Is-86" edge="1" parent="1" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;strokeWidth=5;">
           <mxGeometry relative="1" as="geometry">
             <Array as="points">
-              <mxPoint x="910" y="-76.5" />
-              <mxPoint x="910" y="-76.5" />
+              <mxPoint x="908" y="-76.5" />
+              <mxPoint x="908" y="-76.5" />
             </Array>
+            <mxPoint x="702" y="-76" as="sourcePoint" />
+            <mxPoint x="964.7399999999998" y="-76" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="5baD_fVPrP1Dpk0Kb6Is-107" connectable="0" parent="5baD_fVPrP1Dpk0Kb6Is-86" style="edgeLabel;html=1;align=center;verticalAlign=middle;resizable=0;points=[];" value="aAC" vertex="1">
+          <mxGeometry relative="1" x="-0.5763" as="geometry">
+            <mxPoint x="1" as="offset" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="5baD_fVPrP1Dpk0Kb6Is-108" connectable="0" parent="5baD_fVPrP1Dpk0Kb6Is-86" style="edgeLabel;html=1;align=center;verticalAlign=middle;resizable=0;points=[];" value="AC" vertex="1">
+          <mxGeometry relative="1" x="-0.561" as="geometry">
+            <mxPoint x="-1" as="offset" />
           </mxGeometry>
         </mxCell>
         <mxCell id="5baD_fVPrP1Dpk0Kb6Is-84" parent="1" style="image;aspect=fixed;html=1;points=[];align=center;fontSize=12;image=img/lib/azure2/general/Power.svg;" value="220v 空开" vertex="1">
@@ -264,6 +291,11 @@
             <Array as="points">
               <mxPoint x="400" y="250" />
             </Array>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="5baD_fVPrP1Dpk0Kb6Is-111" connectable="0" parent="5baD_fVPrP1Dpk0Kb6Is-92" style="edgeLabel;html=1;align=center;verticalAlign=middle;resizable=0;points=[];" value="DC" vertex="1">
+          <mxGeometry relative="1" x="-0.4798" as="geometry">
+            <mxPoint as="offset" />
           </mxGeometry>
         </mxCell>
         <mxCell id="5baD_fVPrP1Dpk0Kb6Is-87" parent="1" style="html=1;verticalLabelPosition=bottom;verticalAlign=top;outlineConnect=0;shadow=0;dashed=0;shape=mxgraph.rack.hpe_aruba.switches.j9830b_5400r_2750w_poeplus_zl2_power_supply;" value="48v" vertex="1">
@@ -280,8 +312,18 @@
             </Array>
           </mxGeometry>
         </mxCell>
+        <mxCell id="5baD_fVPrP1Dpk0Kb6Is-109" connectable="0" parent="5baD_fVPrP1Dpk0Kb6Is-97" style="edgeLabel;html=1;align=center;verticalAlign=middle;resizable=0;points=[];" value="AC" vertex="1">
+          <mxGeometry relative="1" x="-0.436" y="2" as="geometry">
+            <mxPoint x="-1" as="offset" />
+          </mxGeometry>
+        </mxCell>
         <mxCell id="5baD_fVPrP1Dpk0Kb6Is-100" edge="1" parent="1" source="5baD_fVPrP1Dpk0Kb6Is-93" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;strokeWidth=5;" target="5baD_fVPrP1Dpk0Kb6Is-18">
           <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="5baD_fVPrP1Dpk0Kb6Is-113" connectable="0" parent="5baD_fVPrP1Dpk0Kb6Is-100" style="edgeLabel;html=1;align=center;verticalAlign=middle;resizable=0;points=[];" value="AC" vertex="1">
+          <mxGeometry relative="1" x="0.0389" y="1" as="geometry">
+            <mxPoint as="offset" />
+          </mxGeometry>
         </mxCell>
         <mxCell id="5baD_fVPrP1Dpk0Kb6Is-93" parent="1" style="image;aspect=fixed;html=1;points=[];align=center;fontSize=12;image=img/lib/azure2/general/Power.svg;" value="220v 空开" vertex="1">
           <mxGeometry height="68" width="44" x="78.01" y="-68" as="geometry" />
