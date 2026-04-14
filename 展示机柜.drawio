@@ -1,6 +1,6 @@
 <mxfile host="app.diagrams.net" agent="Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/146.0.0.0 Safari/537.36 Edg/146.0.0.0" version="29.6.6">
   <diagram name="第 1 页" id="purWPL5MVNEhUzBpqtAV">
-    <mxGraphModel dx="2068" dy="2147" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="1169" pageHeight="827" math="0" shadow="0">
+    <mxGraphModel dx="1723" dy="1927" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="1169" pageHeight="827" math="0" shadow="0">
       <root>
         <mxCell id="0" />
         <mxCell id="1" parent="0" />
@@ -325,14 +325,17 @@
         <mxCell id="5baD_fVPrP1Dpk0Kb6Is-93" parent="1" style="image;aspect=fixed;html=1;points=[];align=center;fontSize=12;image=img/lib/azure2/general/Power.svg;" value="220v 空开" vertex="1">
           <mxGeometry height="68" width="44" x="78.01" y="-68" as="geometry" />
         </mxCell>
-        <mxCell id="5baD_fVPrP1Dpk0Kb6Is-115" parent="1" style="rounded=1;whiteSpace=wrap;html=1;opacity=0;" value="" vertex="1">
-          <mxGeometry height="60" width="120" x="730" y="550" as="geometry" />
-        </mxCell>
         <mxCell id="5baD_fVPrP1Dpk0Kb6Is-116" parent="1" style="text;html=1;whiteSpace=wrap;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;rounded=0;fontSize=35;" value="IT信息柜" vertex="1">
           <mxGeometry height="80" width="270" x="115" y="-230" as="geometry" />
         </mxCell>
         <mxCell id="5baD_fVPrP1Dpk0Kb6Is-117" parent="1" style="text;html=1;whiteSpace=wrap;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;rounded=0;fontSize=35;" value="OT控制柜" vertex="1">
           <mxGeometry height="80" width="270" x="895" y="-230" as="geometry" />
+        </mxCell>
+        <mxCell id="5baD_fVPrP1Dpk0Kb6Is-119" parent="1" style="swimlane;whiteSpace=wrap;html=1;" value="视频监控与热成像分析" vertex="1">
+          <mxGeometry height="834" width="494" x="26" y="-254" as="geometry" />
+        </mxCell>
+        <mxCell id="5baD_fVPrP1Dpk0Kb6Is-120" parent="1" style="swimlane;whiteSpace=wrap;html=1;" value="数据采集与监控" vertex="1">
+          <mxGeometry height="834" width="850" x="600" y="-254" as="geometry" />
         </mxCell>
       </root>
     </mxGraphModel>
